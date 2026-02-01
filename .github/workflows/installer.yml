@@ -137,17 +137,6 @@ jobs:
           cd Installer
           ISCC.exe "Sandboxie-Plus.iss" /DMyAppVersion=${{ steps.determine-run.outputs.version }} /DMyAppArch=x64 /DMyAppSrc=SbiePlus_x64 /ORelease
 
-      - name: Create ARM64 installer
-        shell: cmd
-        run: |
-          cd Installer
-          if exist "SbiePlus_a64" (
-            ISCC.exe "Sandboxie-Plus.iss" /DMyAppVersion=${{ steps.determine-run.outputs.version }} /DMyAppArch=arm64 /DMyAppSrc=SbiePlus_a64 /ORelease
-          ) else (
-            echo "ARM64 artifacts not found, skipping ARM64 installer"
-          )
-        continue-on-error: true
-
       - name: List created installers
         shell: pwsh
         run: |
