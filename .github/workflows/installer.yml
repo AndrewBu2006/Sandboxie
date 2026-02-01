@@ -110,7 +110,7 @@ jobs:
           Invoke-WebRequest -Uri $innoUrl -OutFile $innoInstaller
           
           Write-Output "Installing Inno Setup..."
-          Start-Process -FilePath $innoInstaller -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES" -Wait
+          Start-Process -FilePath $innoInstaller -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART", "/SP-" -Wait
           
           # Add to PATH
           $innoPath = "C:\Program Files (x86)\Inno Setup 6"
